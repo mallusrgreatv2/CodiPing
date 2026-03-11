@@ -1,0 +1,63 @@
+plugins {
+    id 'java'
+    id 'com.gradleup.shadow' version '9.3.1'
+}
+
+group = 'com.codi'
+version = '1.0.0'
+
+repositories {
+    mavenCentral()
+    maven {
+        name = 'bstats'
+        url = 'https://repo.bstats.org/repository/r/'
+    }
+    maven {
+        name = 'papermc'
+        url = 'https://repo.papermc.io/repository/maven-public/'
+    }
+    maven {
+        name = 'placeholderapi'
+        url = 'https://repo.extendedclip.com/content/repositories/placeholderapi/'
+        content {
+            includeGroup "me.clip"
+        }
+    }
+    // Backup repository for PlaceholderAPI
+    maven {
+        name = 'jitpack'
+        url = 'https://jitpack.io'
+    }
+}
+
+dependencies {
+    compileOnly 'io.papermc.paper:paper-api:1.20.1-R0.1-SNAPSHOT'
+    compileOnly 'com.github.PlaceholderAPI:PlaceholderAPI:2.11.5'
+    implementation 'org.bstats:bstats-bukkit:3.2.1'
+}
+
+java {
+    toolchain.languageVersion = JavaLanguageVersion.of(21)
+}
+
+tasks.withType(JavaCompile) {
+    options.encoding = 'UTF-8'
+}
+
+shadowJar {
+    archiveClassifier.set('')
+
+    configurations = [project.configurations.runtimeClasspath]
+
+    dependencies {
+        // Only shade bStats, nothing else
+        exclude { it.moduleGroup != 'org.bstats' }
+    }
+
+    // Relocate bStats to avoid conflicts with other plugins
+    relocate 'org.bstats', "${project.group}.bstats"
+}
+
+build {
+    dependsOn shadowJar
+}

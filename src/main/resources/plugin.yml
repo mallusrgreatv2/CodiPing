@@ -1,0 +1,32 @@
+name: CodiPing
+version: 1.0.0
+main: xyz.codimc.CodiPing
+api-version: '1.21'
+author: CodiMC
+description: A PlaceholderAPI expansion for color hexcode ping display with chat integration
+depend:
+  - PlaceholderAPI
+softdepend:
+  - Essentials
+folia-supported: true
+
+commands:
+  ping:
+    description: Check ping for yourself, another player, or list all online players.
+    usage: /ping [version | list | <player>]
+    aliases: [codiping]
+    permission: codiping.ping
+
+permissions:
+  codiping.ping:
+    description: Allows use of /ping (own ping only)
+    default: true
+  codiping.ping.player:
+    description: Allows use of /ping <player>
+    default: op
+  codiping.ping.list:
+    description: Allows use of /ping list
+    default: op
+  codiping.ping.version:
+    description: Allows use of /ping version
+    default: op
