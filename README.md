@@ -13,7 +13,7 @@ A lightweight Minecraft plugin that replaces `[ping]` in chat with your real-tim
 
 **Tab-list**
 
-[![Tab-list](https://imgur.com/a/EHwC8c5)](https://imgur.com/a/EHwC8c5)
+![Tab-list](https://cdn.discordapp.com/attachments/993357002996711486/1481594471526432768/ezgif.com-animated-gif-maker.gif?ex=69b3e1e0&is=69b29060&hm=44d5c7f8564c80fbf9913d61b912129408d6b121d6e37d82dd2f53f191338c74)
 
 **Nametag**
 
