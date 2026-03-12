@@ -1,10 +1,13 @@
 package xyz.codimc;
 
+import org.bstats.bukkit.Metrics;
+import org.bstats.charts.SimplePie;
 import org.bukkit.plugin.java.JavaPlugin;
 
 public final class CodiPing extends JavaPlugin {
 
     private static CodiPing instance;
+    private static final int BSTATS_PLUGIN_ID = 30057;
     private boolean isFolia;
 
     @Override
@@ -30,6 +33,10 @@ public final class CodiPing extends JavaPlugin {
             getServer().getPluginManager().disablePlugin(this);
             return;
         }
+
+        // Initialize bStats metrics
+        Metrics metrics = new Metrics(this, BSTATS_PLUGIN_ID);
+        metrics.addCustomChart(new SimplePie("server_type", () -> isFolia ? "Folia" : "Paper/Spigot"));
 
         // Register chat listener for [ping] replacement
         getServer().getPluginManager().registerEvents(new ChatListener(this), this);
