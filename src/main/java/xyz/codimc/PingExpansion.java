@@ -5,13 +5,6 @@ import org.bukkit.entity.Player;
 import org.jetbrains.annotations.NotNull;
 
 public class PingExpansion extends PlaceholderExpansion {
-
-    private final CodiPing plugin;
-
-    public PingExpansion(CodiPing plugin) {
-        this.plugin = plugin;
-    }
-
     @Override
     public @NotNull String getIdentifier() {
         return "codiping";
@@ -24,7 +17,7 @@ public class PingExpansion extends PlaceholderExpansion {
 
     @Override
     public @NotNull String getVersion() {
-        return "1.0.0";
+        return "1.1.0";
     }
 
     @Override
